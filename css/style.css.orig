@@ -1,0 +1,128 @@
+* {
+  margin: 0;
+  padding: 0;
+  zoom: 1;
+  box-sizing: content-box;
+}
+
+/*
+  変数定義
+*/
+:root {
+  --header-bgcolor: rgb(42, 42, 42); /* ヘッダー背景色 */
+  --icon-color: rgb(234, 234, 234); /* アイコン文字色 */
+  --font-color-w: rgb(234, 234, 234); /* 文字色　白 */
+  --font-color-w-hover: rgb(166, 166, 166); /* ホバー時　文字色　白 */
+} 
+
+/* 
+  ロゴ
+*/
+
+.h-logo {
+  width: 350px;
+  height: 55px;
+  position: relative;
+}
+.logo-icon {
+  display: inline-block;
+  background-color: var(--icon-color);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+}
+.logo-large-title {
+  width: calc(100% - 60px);
+  display: inline-block;
+  position: absolute;
+  font-size: 25px;
+  left: 60px;
+}
+.logo-small-title {
+  width: calc(100% - 60px);
+  display: inline-block;
+  position: absolute;
+  font-size: 15px;
+  left: 60px;
+  top: 30px;
+}
+
+/* 
+  keyvisual
+*/
+#keyvisual {
+  position: relative;
+}
+#keyvisual span {
+  position: absolute;
+  display: block;
+  text-align: center;
+  width: 100%;
+  font-family: "M PLUS 1p";
+}
+#kvw1 {
+  font-size: 60px;
+  top: 140px;
+}
+
+/*
+  ヘッダー
+*/
+
+/* 上部全体 */
+header {
+  background-color: var(--header-bgcolor);
+}
+header * {
+  color: var(--font-color-w);
+}
+/* ロゴなどのコンテンツ */
+.h-wrapper {
+  max-width: var(--total-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+.h-nav-sub ul {
+  display: block;
+  padding: 5px 0;
+}
+.h-nav-sub ul li {
+  display: inline-block;
+  font-size: 1.14em;
+  margin-right: -5px;
+}
+.h-nav-sub ul li a {
+  display: block;
+  width: 100px;
+  border-right: 1px solid var(--font-color-w);
+  text-align: center;
+  transition-property: color;
+  transition-delay: 0s;
+  transition-duration: 0.6s;
+}
+.h-nav-sub ul li:last-child a {
+  border-right: 0px;
+}
+.h-nav-sub ul li a:hover {
+  text-decoration: none;
+  color: var(--font-color-w-hover);
+}
+
+/* 
+  メイン
+*/
+main {
+  width: var(--total-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 
+  フッター
+*/
+footer {
+  width: var(--total-width);
+}

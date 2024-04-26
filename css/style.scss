@@ -1,0 +1,294 @@
+// Root
+* {
+    margin: 0;
+    padding: 0;
+    zoom: 1;
+    box-sizing: content-box;
+    font-size: 20px;
+}
+
+// 変数
+$bg-black: rgb(42, 42, 42);
+$font-black: (
+    "default": black,
+    "hover": rgb(75, 75, 75)
+);
+$font-white: (
+    "default": rgb(234, 234, 234),
+    "hover": rgb(99, 99, 99)
+);
+
+// メディアクエリ
+$breakpoints: (
+    'sp': 'screen and (max-width: 576px)',
+    'pc': 'screen and (min-width: 577px)',
+    ) !default;
+
+@mixin media($breakpoint) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}
+
+$pc-max-width: 900px;
+
+// **ヘッダー**
+header {
+    background-color: $bg-black;
+
+    * {
+        color: map-get(
+            $map: $font-white, $key: default
+        );
+}
+
+.hd-content {
+    margin-left: auto;
+    margin-right: auto;
+
+    @include media(sp) {
+        width: 100%;
+    }
+
+    @include media(pc) {
+        width: 95%;
+        max-width: $pc-max-width;
+    }
+
+    .hd-logo {
+        width: 350px;
+        height: 55px;
+        position: relative;
+
+        .logo-icon {
+            display: inline-block;
+            background-color: white;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            left: 4px;
+        }
+
+
+        .logo-large-title {
+            width: calc(100% - 60px);
+            display: inline-block;
+            position: absolute;
+            font-size: 25px;
+            left: 60px;
+        }
+
+        .logo-small-title {
+            width: calc(100% - 60px);
+            display: inline-block;
+            position: absolute;
+            font-size: 15px;
+            left: 60px;
+            top: 30px;
+        }
+
+    }
+}
+}
+
+// キービジュアル
+#keyvisual {
+    position: relative;
+    display: inline-block;
+    background-image: url(../images/kv.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 60vh;
+
+    span {
+        position: absolute;
+        display: block;
+        text-align: center;
+        width: 100%;
+        font-family: "M PLUS 1p";
+        background-color: rgba(255, 255, 255, 0.342);
+    }
+
+    #kvw1 {
+        @include media(sp) {
+            word-break: keep-all;
+            font-size: 30px;
+        }
+
+        @include media(pc) {
+            word-break: keep-all;
+            font-size: 60px;
+        }
+        top: 140px;
+    }
+}
+
+// ロゴなどのコンテンツ
+.hd-nav-sub {
+    ul {
+        display: block;
+        padding-top: 5px;
+
+        li {
+            display: inline-block;
+            font-size: 1.14em;
+            margin-right: -5px;
+
+            a {
+                display: block;
+                width: 100px;
+                text-align: center;
+                transition-property: color;
+                transition-delay: 0s;
+                transition-duration: 0.6s;
+            }
+
+            a:hover {
+                text-decoration: none;
+                color: map-get($map: $font-white, $key: hover);
+            }
+        }
+
+        .active-hd-nav {
+            background-color: map-get($map: $font-white, $key: default);
+            color: map-get($map: $font-black, $key: default);
+            border-radius: 2px 2px 0 0;
+        }
+    }
+}
+
+// **メイン**
+main {
+    min-height: 95vh;
+    section {
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 24px;
+        margin-bottom: 24px;
+
+        @include media(sp) {
+            width: 97%;
+        }
+
+        @include media(pc) {
+            width: 95%;
+            max-width: $pc-max-width;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background-color: #333;
+            margin-top: 6px;
+        }
+
+        h1 {
+            font-size: 1.6rem;
+            margin-top: 12px;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 12px;
+        }
+
+        p {
+            @include media(sp) {
+                word-break: normal;
+            }
+    
+            @include media(pc) {
+                word-break: keep-all;
+            }
+        }
+    }
+}
+
+// **フッター**
+footer {
+    padding: 12px 24px;
+    background-color: $bg-black;
+
+    * {
+        color: map-get($map: $font-white, $key: default);
+    }
+}
+
+// SNS follow ボタン
+#floating-icons {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 24px 12px;
+
+    ul {
+        display: block;
+        list-style: none;
+        margin: 0 0 -8px;
+        overflow: hidden;
+        padding: 0;
+    
+        li {
+            float: left;
+            margin: 0 8px 8px 0;
+            padding: 0;
+            border-radius: 2px;
+    
+            a::before {
+                display: inline-block;
+                font-family: FontAwesome;
+                font-size: 36px;
+                height: 44px;
+                /* Button height */
+                line-height: 44px;
+                /* Button height */
+                -webkit-transition: all .3s ease;
+                transition: all .3s ease;
+                text-align: center;
+                width: 44px;
+                /* Button width */
+            }
+    
+            a[href*="twitter.com"]::before { content: "\f099"; }
+            a[href*="header"]::before { content: "\f062"; }
+        }
+    }
+
+    .follow-me {
+        li {
+            a::before {
+                border: 1px solid #0000008a;
+                border-radius: 2px;
+                background-color: #8585858a;
+            }
+            a:hover::before {
+                background-color: #0000008a;
+                color: #fff;
+            }
+    
+            a[href*="twitter.com"]::before { content: "\f099"; }
+            a[href*="header"]::before { content: "\f062"; }
+        }
+    }
+
+    .page-up-arrow {
+        text-shadow:1px 1px 0 #FFF, -1px -1px 0 #FFF,
+            -1px 1px 0 #FFF, 1px -1px 0 #FFF,
+            0px 1px 0 #FFF,  0-1px 0 #FFF,
+            -1px 0 0 #FFF, 1px 0 0 #FFF;
+        li {
+            a:hover::before {
+                color: #858585;
+            }
+        }
+    }
+}
+
+// 一般スタイル
+// 中央寄せ
+.put-center {
+    text-align: center;
+}
